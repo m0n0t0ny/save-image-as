@@ -70,7 +70,7 @@ We may update this Privacy Policy from time to time. Any changes will be reflect
 If you have questions about this Privacy Policy, please contact:
 
 **Email:** anto.bertu@gmail.com
-**GitHub:** https://github.com/YOUR_USERNAME/save-image-as-extension
+**GitHub:** https://github.com/m0n0t0ny/save-image-as
 
 ## Open Source
 
