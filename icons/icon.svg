@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="667.23297"
+   height="667.23297"
+   viewBox="0 0 667.23297 667.23297"
+   sodipodi:docname="icon.svg"
+   inkscape:export-filename="icon128.png"
+   inkscape:export-xdpi="18.416357"
+   inkscape:export-ydpi="18.416357"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.6375"
+     inkscape:cx="48.627451"
+     inkscape:cy="416.47059"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g5" />
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g1">
+    <g
+       id="g5"
+       style="fill:#404040;fill-opacity:1">
+      <circle
+         style="fill:#808080;fill-opacity:0.7529183;stroke-width:4.80731;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+         id="path2"
+         cx="132.57909"
+         cy="132.59059"
+         r="66.652588"
+         inkscape:export-filename="icon16.png"
+         inkscape:export-xdpi="2.3020463"
+         inkscape:export-ydpi="2.3020463" />
+      <path
+         id="path4"
+         style="fill:#808080;fill-opacity:0.7529183;stroke-width:3.32558;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+         d="m 401.11874,350.26963 c -1.14084,0.0167 -1.78621,0.18823 -1.78621,0.18823 0,0 -0.64563,-0.16495 -1.7862,-0.1819 -3.42173,-0.0512 -11.32961,1.26428 -19.8626,12.54889 L 263.07441,514.38603 211.44989,446.11409 c -7.40353,-9.79096 -14.08828,-8.04766 -14.08828,-8.04766 0,0 -0.42046,-0.10608 -1.16267,-0.11706 -2.2266,-0.0332 -7.37299,0.82139 -12.92561,8.16459 L 65.929484,601.29283 h 131.425606 0.006 131.42565 70.54529 201.97092 L 420.98796,362.82502 c -8.53299,-11.28468 -16.44656,-12.60358 -19.86908,-12.55539 z" />
+      <path
+         id="rect4"
+         style="fill:#808080;fill-opacity:0.7529183;stroke-width:5.75196;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+         d="M 15.978516 0 C 7.1260681 0 1.1842379e-15 7.1260676 0 15.978516 L 0 651.25391 C 0 660.10634 7.1260681 667.23242 15.978516 667.23242 L 345.13086 667.23242 L 622.86523 667.23242 L 651.25195 667.23242 C 660.10438 667.23242 667.23242 660.10634 667.23242 651.25391 L 667.23242 15.978516 C 667.23242 7.1260696 660.10438 1.1842379e-15 651.25195 0 L 622.86523 0 L 345.13086 0 L 15.978516 0 z M 38.958984 38.970703 L 345.13086 38.970703 L 622.86523 38.970703 L 628.27148 38.970703 L 628.27148 628.26367 L 622.86523 628.26367 L 345.13086 628.26367 L 38.958984 628.26367 L 38.958984 38.970703 z "
+         inkscape:export-filename="icon128.png"
+         inkscape:export-xdpi="18.41637"
+         inkscape:export-ydpi="18.41637" />
+    </g>
+    <g
+       id="g11"
+       transform="translate(151.3775,-2.8033131e-4)">
+      <g
+         id="g13">
+        <g
+           id="g6"
+           transform="matrix(1.1733435,0,0,1.1733435,-267.03856,-20.835336)">
+          <rect
+             style="opacity:1;fill:#1a73e8;fill-opacity:1;stroke-width:1.51169;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+             id="rect5"
+             width="310.63098"
+             height="137.53339"
+             x="356.60199"
+             y="17.757235"
+             ry="14.066298" />
+          <text
+             xml:space="preserve"
+             style="font-size:91.5737px;line-height:0.9;font-family:Inter;-inkscape-font-specification:Inter;text-align:center;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1.38854;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+             x="511.11264"
+             y="119.83565"
+             id="text5-3"><tspan
+               sodipodi:role="line"
+               id="tspan5-8"
+               x="511.11264"
+               y="119.83565"
+               style="font-weight:bold;stroke-width:1.38854">PNG</tspan></text>
+        </g>
+        <g
+           id="g14">
+          <rect
+             style="opacity:1;fill:#269745;fill-opacity:1;stroke-width:1.51169;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+             id="rect5-4"
+             width="310.63098"
+             height="137.53339"
+             x="342.87341"
+             y="179.79739"
+             ry="14.066298"
+             transform="matrix(1.1733435,0,0,1.1733435,-250.93021,-42.344412)" />
+          <text
+             xml:space="preserve"
+             style="font-size:107.447px;line-height:0.9;font-family:Inter;-inkscape-font-specification:Inter;text-align:center;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1.62923;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+             x="334.03622"
+             y="288.39258"
+             id="text5"><tspan
+               sodipodi:role="line"
+               id="tspan5"
+               x="334.03622"
+               y="288.39258"
+               style="font-weight:bold;stroke-width:1.62923">JPG</tspan></text>
+        </g>
+        <g
+           id="g8"
+           transform="matrix(1.1733435,0,0,1.1733435,-267.03856,-63.853453)">
+          <rect
+             style="opacity:1;fill:#faad04;fill-opacity:1;stroke-width:1.51169;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+             id="rect5-4-5"
+             width="310.63098"
+             height="137.53339"
+             x="356.60199"
+             y="341.83752"
+             ry="14.066298" />
+          <text
+             xml:space="preserve"
+             style="font-size:91.5737px;line-height:0.9;font-family:Inter;-inkscape-font-specification:Inter;text-align:center;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1.38854;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+             x="512.81177"
+             y="443.91595"
+             id="text5-3-6"><tspan
+               sodipodi:role="line"
+               id="tspan5-8-0"
+               x="512.81177"
+               y="443.91595"
+               style="font-weight:bold;stroke-width:1.38854">WEBP</tspan></text>
+        </g>
+        <g
+           id="g9"
+           transform="matrix(1.1733435,0,0,1.1733435,-267.03856,-85.362531)">
+          <rect
+             style="opacity:1;fill:#dc3428;fill-opacity:1;stroke-width:1.51169;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+             id="rect5-4-2"
+             width="310.63098"
+             height="137.53339"
+             x="356.60199"
+             y="503.87769"
+             ry="14.066298" />
+          <text
+             xml:space="preserve"
+             style="font-size:91.5737px;line-height:0.9;font-family:Inter;-inkscape-font-specification:Inter;text-align:center;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1.38854;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+             x="510.41959"
+             y="605.95612"
+             id="text5-3-6-4"><tspan
+               sodipodi:role="line"
+               id="tspan5-8-0-9"
+               x="510.41959"
+               y="605.95612"
+               style="font-weight:bold;stroke-width:1.38854">PDF</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g5-4"
+       transform="matrix(0.96758367,0,0,0.96758367,792.45098,30.857766)" />
+  </g>
+</svg>

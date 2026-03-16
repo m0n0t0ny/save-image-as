@@ -1,0 +1,11 @@
+{
+  "extensionName": {
+    "message": "Bild Speichern Als .jpg/.png/.webp/.pdf"
+  },
+  "extensionDescription": {
+    "message": "Speichern Sie Bilder direkt aus dem Kontextmenü im JPG-, PNG-, WEBP- oder PDF-Format"
+  },
+  "contextMenuTitle": {
+    "message": "Bild speichern als..."
+  }
+}

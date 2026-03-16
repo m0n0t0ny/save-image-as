@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save Image As</title>
+  <style>
+    body {
+      width: 320px;
+      min-height: 200px;
+      margin: 0;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333;
+      background: #f8f9fa;
+    }
+
+    h1 {
+      margin: 0 0 16px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a73e8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .section {
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #202124;
+    }
+
+    .instructions {
+      background: #e8f0fe;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 12px 0;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .step:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      background: #1a73e8;
+      color: white;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+
+    .formats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .format-badge {
+      background: #e8f0fe;
+      color: #1967d2;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .footer {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid #e0e0e0;
+      font-size: 12px;
+      color: #5f6368;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .privacy-note {
+      background: #e6f4ea;
+      /* border-left: 3px solid #34a853; */
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      /* color: #137333; */
+      margin-top: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>
+    <img src="icons/icon48.png" alt="Icon" class="icon">
+    Save Image As
+  </h1>
+
+  <div class="section">
+    <div class="section-title">How to use:</div>
+    <div class="instructions">
+      <div class="step">
+        <span class="step-number">1</span>
+        <span>Right-click on any image</span>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <span>Select "Save image as..."</span>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <span>Choose your format</span>
+      </div>
+      <div class="step">
+        <span class="step-number">4</span>
+        <span>Save the converted image</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Supported formats:</div>
+    <div class="formats">
+      <div class="format-badge">JPG</div>
+      <div class="format-badge">PNG</div>
+      <div class="format-badge">WEBP</div>
+      <div class="format-badge">PDF</div>
+    </div>
+  </div>
+
+  <div class="privacy-note">
+    🔒 100% privacy-friendly, all processing happens locally
+  </div>
+
+  <div class="footer">
+    <a href="https://github.com/YOUR_USERNAME/save-image-as-extension" target="_blank">GitHub</a>
+    •
+    <a href="https://github.com/YOUR_USERNAME/save-image-as-extension/issues" target="_blank">Support</a>
+    •
+    <a href="https://YOUR_USERNAME.github.io/save-image-as-extension/PRIVACY_POLICY.html" target="_blank">Privacy</a>
+  </div>
+</body>
+
+</html>

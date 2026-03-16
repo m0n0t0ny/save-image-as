@@ -1,0 +1,11 @@
+{
+  "extensionName": {
+    "message": "Salvar Imagem Como .jpg/.png/.webp/.pdf"
+  },
+  "extensionDescription": {
+    "message": "Salve imagens diretamente do menu de contexto em formato JPG, PNG, WEBP ou PDF"
+  },
+  "contextMenuTitle": {
+    "message": "Salvar imagem como..."
+  }
+}
