@@ -81,7 +81,7 @@ Then:
 - ✅ All processing happens locally
 - ✅ Open source code
 
-Read our full [Privacy Policy](PRIVACY_POLICY.md).
+Read our full [Privacy Policy](https://m0n0t0ny.github.io/save-image-as/PRIVACY_POLICY).
 
 ## 📄 License
 
@@ -110,7 +110,7 @@ Need help? Have questions?
 
 - **Email**: anto.bertu@gmail.com
 - **Issues**: [GitHub Issues](https://github.com/m0n0t0ny/save-image-as-extension/issues)
-- **Privacy Policy**: [Read here](https://m0n0t0ny.github.io/save-image-as-extension/PRIVACY_POLICY.html)
+- **Privacy Policy**: [Read here](https://m0n0t0ny.github.io/save-image-as/PRIVACY_POLICY)
 
 ## 🤝 Contributing
 
