@@ -15,7 +15,6 @@ __pycache__/
 create-icons.html
 
 # Screenshots and promo materials (only for Chrome Web Store, not in extension)
-screenshots/
 promo_images/
 
 # Store documentation (not needed in public repo)
