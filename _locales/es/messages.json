@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "Guardar Imagen Como .jpg/.png/.webp/.pdf"
+    "message": "Guardar imagen como jpg, png, webp, pdf"
   },
   "extensionDescription": {
     "message": "Guarda imágenes directamente desde el menú contextual en formato JPG, PNG, WEBP o PDF"

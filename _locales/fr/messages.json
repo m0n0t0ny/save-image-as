@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "Enregistrer Image Comme .jpg/.png/.webp/.pdf"
+    "message": "Enregistrer image comme jpg, png, webp, pdf"
   },
   "extensionDescription": {
     "message": "Enregistrez des images directement depuis le menu contextuel au format JPG, PNG, WEBP ou PDF"

@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "Save Image As .jpg/.png/.webp/.pdf"
+    "message": "Save image as jpg, png, webp, pdf"
   },
   "extensionDescription": {
     "message": "Save images directly from the context menu in JPG, PNG, WEBP or PDF format"
