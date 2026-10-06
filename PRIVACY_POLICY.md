@@ -1,7 +1,9 @@
+> The official, always up-to-date version of this policy is published at https://save-image-as.vercel.app/privacy
+
 # Privacy Policy - Save Image As Extension
 
 **Effective Date:** March 16, 2026
-**Last Updated:** March 16, 2026
+**Last Updated:** October 6, 2026
 
 ## Overview
 
@@ -14,7 +16,7 @@ Save Image As .jpg/.png/.webp/.pdf ("the Extension") is committed to protecting 
 The Extension operates entirely on your local device and does not:
 - Collect any personal information
 - Track your browsing history
-- Store any data about your usage
+- Store any personal data about your usage (only an anonymous local counter, see "Data Storage")
 - Send any data to external servers
 - Use cookies or similar tracking technologies
 - Communicate with any third-party services
@@ -35,7 +37,11 @@ The Extension requires certain permissions to function:
 - **Purpose:** Inject the image conversion script to process the image format conversion
 - **Data Access:** Only accesses the specific image you right-click on for conversion purposes
 
-### 4. Host Permissions (`<all_urls>`)
+### 4. Storage (`storage`)
+- **Purpose:** Keep a few local settings: a counter of saved images and your answer to the rating request (so a rating is requested at most once), whether you have seen the new bulk download feature, and the bulk download mode you chose
+- **Data Access:** Only these settings. They stay on your device and are never transmitted
+
+### 5. Host Permissions (`<all_urls>`)
 - **Purpose:** Allow the Extension to work on any website where you want to save images
 - **Data Access:** Only the images you explicitly select to convert. No browsing data is collected or transmitted
 
@@ -51,11 +57,17 @@ The Extension requires certain permissions to function:
 
 The Extension does **not** use any third-party services, analytics, or external libraries that collect data.
 
-Note: The Extension includes jsPDF library for PDF conversion, which runs entirely locally in your browser without any external connections.
+PDF files are created by the Extension's own code, entirely locally in your browser, without third-party libraries or external connections.
 
 ## Data Storage
 
-The Extension does **not** store any data. All image processing happens in real-time and temporarily in your browser's memory. Once the conversion is complete, no data is retained.
+All image processing happens in real-time and temporarily in your browser's memory. Once the conversion is complete, no image data is retained.
+
+The Extension stores only these settings locally on your device: the number of images saved and your answer to the rating request (rate, later, no thanks), whether you have already seen the new bulk download feature, and the download mode chosen in bulk download (ZIP archive or separate files). None of these values identify you; they are never transmitted and are removed when you uninstall the Extension.
+
+## Uninstall Feedback Page
+
+When you uninstall the Extension, Chrome opens a feedback page on https://save-image-as.vercel.app. The page address includes only the Extension version and your browser language, so the page can be shown in your language. Sending feedback is optional and happens only if you choose to send an email.
 
 ## Children's Privacy
 
@@ -70,11 +82,7 @@ We may update this Privacy Policy from time to time. Any changes will be reflect
 If you have questions about this Privacy Policy, please contact:
 
 **Email:** anto.bertu@gmail.com
-**GitHub:** https://github.com/m0n0t0ny/save-image-as
-
-## Open Source
-
-This Extension is open source and available on GitHub. You can review the complete source code at the repository above to verify that no data collection occurs.
+**Website:** https://save-image-as.vercel.app
 
 ## Consent
 
@@ -82,4 +90,4 @@ By using the Extension, you consent to this Privacy Policy.
 
 ---
 
-**In Summary:** This Extension is completely privacy-friendly. It doesn't collect, store, or transmit any of your data. All operations happen locally on your device.
+**In Summary:** This Extension is completely privacy-friendly. It doesn't collect or transmit any of your data. All operations happen locally on your device.

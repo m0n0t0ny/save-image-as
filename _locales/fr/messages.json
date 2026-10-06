@@ -3,9 +3,195 @@
     "message": "Enregistrer image comme jpg, png, webp, pdf"
   },
   "extensionDescription": {
-    "message": "Enregistrez des images directement depuis le menu contextuel au format JPG, PNG, WEBP ou PDF"
+    "message": "Enregistrez des images en JPG, PNG, WEBP ou PDF en un clic droit. Téléchargez toutes les images d'une page. 100% local."
   },
   "contextMenuTitle": {
     "message": "Enregistrer l'image sous..."
+  },
+  "reviewPromptText": {
+    "message": "Enregistrer image vous est utile ? Une note rapide aide d'autres personnes à la trouver."
+  },
+  "reviewPromptRate": {
+    "message": "Noter"
+  },
+  "reviewPromptLater": {
+    "message": "Plus tard"
+  },
+  "reviewPromptNever": {
+    "message": "Non merci"
+  },
+  "popupStep1": {
+    "message": "Clic droit sur une image"
+  },
+  "popupStep2": {
+    "message": "Sélectionnez « $1 »"
+  },
+  "popupStep3": {
+    "message": "Choisissez PNG, JPG, WEBP ou PDF"
+  },
+  "popupBulkButton": {
+    "message": "Ouvrir le téléchargement en masse"
+  },
+  "popupBulkDesc": {
+    "message": "Trouvez et téléchargez toutes les images de cette page"
+  },
+  "popupPrivacy": {
+    "message": "Tout se passe dans votre navigateur. Rien n'est envoyé en ligne."
+  },
+  "popupSupport": {
+    "message": "Assistance"
+  },
+  "popupPrivacyLink": {
+    "message": "Confidentialité"
+  },
+  "bulkPageTitle": {
+    "message": "Téléchargement en masse - Enregistrer image"
+  },
+  "bulkTitle": {
+    "message": "Téléchargement en masse"
+  },
+  "bulkLoading": {
+    "message": "Chargement..."
+  },
+  "bulkLayersLabel": {
+    "message": "Niveaux à analyser"
+  },
+  "bulkDepthMain": {
+    "message": "Page principale uniquement (niveau 0)"
+  },
+  "bulkDepthIframes": {
+    "message": "Page principale + niveaux d'iframe : $1"
+  },
+  "bulkFilters": {
+    "message": "Filtres"
+  },
+  "bulkMinSize": {
+    "message": "Taille minimale (px)"
+  },
+  "bulkDedup": {
+    "message": "Garder la meilleure version des images similaires"
+  },
+  "bulkBestPicture": {
+    "message": "Meilleur format par groupe <picture>"
+  },
+  "bulkExcludeIcons": {
+    "message": "Exclure les icônes (≤ 64 px)"
+  },
+  "bulkExcludeSvg": {
+    "message": "Exclure les fichiers SVG"
+  },
+  "bulkExcludeCss": {
+    "message": "Exclure les arrière-plans CSS"
+  },
+  "bulkScan": {
+    "message": "Analyser la page"
+  },
+  "bulkScanning": {
+    "message": "Analyse..."
+  },
+  "bulkScanningPage": {
+    "message": "Analyse de la page..."
+  },
+  "bulkInfo1": {
+    "message": "Les images du niveau 0 (page principale) sont présélectionnées."
+  },
+  "bulkInfo2": {
+    "message": "Les images des iframes sont visibles mais non sélectionnées."
+  },
+  "bulkSelectAll": {
+    "message": "Tout sélectionner"
+  },
+  "bulkDeselectAll": {
+    "message": "Tout désélectionner"
+  },
+  "bulkDeselect": {
+    "message": "Désélectionner"
+  },
+  "bulkOriginalFormat": {
+    "message": "Format d'origine"
+  },
+  "bulkDownloadSelected": {
+    "message": "Télécharger la sélection"
+  },
+  "bulkDownloadN": {
+    "message": "Télécharger les images : $1"
+  },
+  "bulkNoTab": {
+    "message": "Erreur : onglet introuvable. Ouvrez cette page depuis la fenêtre de l'extension."
+  },
+  "bulkScanError": {
+    "message": "Erreur d'analyse : $1"
+  },
+  "bulkNoMatch": {
+    "message": "Aucune image ne correspond aux filtres"
+  },
+  "bulkNoImages": {
+    "message": "Aucune image trouvée"
+  },
+  "bulkMainPage": {
+    "message": "Page principale"
+  },
+  "bulkIframeLevel": {
+    "message": "iframe de niveau $1"
+  },
+  "bulkImageCount": {
+    "message": "Images : $1"
+  },
+  "bulkNoPreview": {
+    "message": "Pas d'aperçu"
+  },
+  "bulkSelectedOf": {
+    "message": "Sélectionnées : $1 / $2"
+  },
+  "bulkDownloadedOf": {
+    "message": "Téléchargées : $1 / $2"
+  },
+  "bulkDone": {
+    "message": "Terminé. Images téléchargées : $1"
+  },
+  "popupHeading": {
+    "message": "Enregistrer l'image"
+  },
+  "popupWebsite": {
+    "message": "Site web"
+  },
+  "contextMenuBulk": {
+    "message": "Ouvrir le téléchargement en masse..."
+  },
+  "newLabel": {
+    "message": "nouveau"
+  },
+  "bulkModeLabel": {
+    "message": "Mode de téléchargement"
+  },
+  "bulkModeSeparate": {
+    "message": "Fichiers séparés"
+  },
+  "bulkModeZip": {
+    "message": "Archive ZIP"
+  },
+  "bulkZipProgress": {
+    "message": "Création du ZIP : $1 / $2"
+  },
+  "bulkZipDone": {
+    "message": "Terminé. Archive ZIP avec $1 images"
+  },
+  "bulkDepthAll": {
+    "message": "Tous les niveaux (page principale et iframes)"
+  },
+  "bulkDepthAllShort": {
+    "message": "Tous"
+  },
+  "bulkAskNote": {
+    "message": "Si Chrome vous demande où enregistrer chaque fichier, choisissez « Archive ZIP » ou désactivez « Toujours demander où enregistrer les fichiers » dans les paramètres de Chrome."
+  },
+  "bulkOpenSettings": {
+    "message": "Ouvrir les paramètres de téléchargement"
+  },
+  "popupBulkHeading": {
+    "message": "Téléchargement en masse"
+  },
+  "popupHowToHeading": {
+    "message": "Enregistrer une seule image"
   }
 }

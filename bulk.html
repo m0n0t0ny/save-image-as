@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="bulkPageTitle">Bulk Download - Save Image As</title>
+  <style>
+    :root {
+      --bg: #f6f5ff;
+      --surface: #ffffff;
+      --ink: #1e1b4b;
+      --muted: #5b5790;
+      --line: #e2def8;
+      --accent: #6366f1;
+      --accent-strong: #4f46e5;
+      --accent-soft: #eeedfd;
+      --checker: #f1effc;
+      --warn-bg: #fff8eb;
+      --warn-line: #f3d9a4;
+      --warn-ink: #7a4b0c;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    button, input, select { font: inherit; color: inherit; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* Intestazione */
+    header {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+    header img { width: 24px; height: 24px; }
+    header h1 { font-size: 15px; font-weight: 600; white-space: nowrap; }
+    header .sep { color: var(--line); }
+    header .page-url {
+      color: var(--muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .layout {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+    }
+
+    /* Barra laterale */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      padding: 18px 16px;
+      background: var(--surface);
+      border-right: 1px solid var(--line);
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .slider-row { display: flex; align-items: center; gap: 10px; }
+    input[type="range"] { flex: 1; accent-color: var(--accent); cursor: pointer; }
+    .slider-val { min-width: 38px; text-align: right; font-weight: 600; color: var(--accent-strong); }
+    .depth-hint { margin-top: 4px; color: var(--muted); font-size: 12px; }
+
+    .field { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+    input[type="number"] {
+      width: 76px;
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      text-align: right;
+    }
+
+    .check-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 4px 0;
+      cursor: pointer;
+    }
+    .check-row input { margin-top: 3px; width: 14px; height: 14px; accent-color: var(--accent); flex-shrink: 0; cursor: pointer; }
+
+    .scan-btn {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--accent-strong);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .scan-btn:hover:not(:disabled) { background: var(--accent-soft); }
+    .scan-btn:disabled { opacity: 0.5; cursor: default; }
+
+    .info-note { color: var(--muted); font-size: 12px; }
+    .info-note span { display: block; }
+
+    .warn-note {
+      padding: 10px 12px;
+      border: 1px solid var(--warn-line);
+      border-radius: 8px;
+      background: var(--warn-bg);
+      color: var(--warn-ink);
+      font-size: 12px;
+    }
+    .warn-note[hidden] { display: none; }
+    .link-btn {
+      display: block;
+      margin-top: 6px;
+      border: 0;
+      background: none;
+      color: var(--accent-strong);
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* Area delle immagini */
+    .main { position: relative; padding: 20px 24px; overflow-y: auto; }
+
+    .empty-state {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--line);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    .layer-group + .layer-group { margin-top: 28px; }
+
+    .layer-header {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .layer-title { font-size: 15px; font-weight: 600; }
+    .layer-count { color: var(--muted); }
+    .layer-actions { margin-left: auto; display: flex; gap: 14px; }
+    .layer-btn {
+      border: 0;
+      background: none;
+      color: var(--accent-strong);
+      cursor: pointer;
+    }
+    .layer-btn:hover { text-decoration: underline; }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+      gap: 12px;
+    }
+
+    /* Raggi concentrici: tessera 10 = casella (circa 2) + distanza 8; l'anteprima tocca il bordo ed è ritagliata */
+    .img-tile {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .img-tile:hover { border-color: #c7c2f2; }
+    .img-tile.selected { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    .img-tile label { display: block; cursor: pointer; }
+
+    .img-tile input[type="checkbox"] {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      z-index: 1;
+      width: 16px;
+      height: 16px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    /* Scacchiera: mostra le zone trasparenti di PNG, WEBP e SVG */
+    .img-thumb-wrap {
+      height: 116px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      background-image: conic-gradient(var(--checker) 25%, transparent 0 50%, var(--checker) 0 75%, transparent 0);
+      background-size: 16px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .img-thumb { max-width: 100%; max-height: 116px; object-fit: contain; }
+    .img-thumb-error { color: var(--muted); font-size: 12px; }
+
+    .img-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      padding: 6px 10px;
+    }
+    .img-dims { font-variant-numeric: tabular-nums; color: var(--ink); font-size: 12px; }
+    .img-src-badge { color: var(--muted); font-size: 11px; font-weight: 600; white-space: nowrap; }
+
+    /* Barra in basso */
+    footer {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-btn {
+      padding: 6px 4px;
+      border: 0;
+      background: none;
+      color: var(--accent-strong);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .footer-btn:hover:not(:disabled) { text-decoration: underline; }
+    .footer-btn:disabled { color: var(--muted); opacity: 0.5; cursor: default; }
+
+    .status-text {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--muted);
+    }
+
+    .format-select {
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      cursor: pointer;
+    }
+
+    .download-btn {
+      padding: 8px 18px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .download-btn:hover:not(:disabled) { background: var(--accent-strong); }
+    .download-btn:disabled { opacity: 0.45; cursor: default; }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="icons/icon48.png" alt="">
+    <h1 data-i18n="bulkTitle">Bulk Download</h1>
+    <span class="sep">/</span>
+    <span class="page-url" id="pageUrl" data-i18n="bulkLoading">Loading...</span>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+
+      <section>
+        <h2 data-i18n="bulkLayersLabel">Layers to scan</h2>
+        <div class="slider-row">
+          <input type="range" id="layerDepth" min="0" max="6" value="0" aria-labelledby="depthHint">
+          <span class="slider-val" id="layerDepthVal">All</span>
+        </div>
+        <p class="depth-hint" id="depthHint">All levels (main page and iframes)</p>
+      </section>
+
+      <section>
+        <h2 data-i18n="bulkFilters">Filters</h2>
+        <div class="field">
+          <label for="minSize" data-i18n="bulkMinSize">Min size (px)</label>
+          <input type="number" id="minSize" value="50" min="0" step="10">
+        </div>
+        <label class="check-row">
+          <input type="checkbox" id="dedupImages" checked>
+          <span data-i18n="bulkDedup">Keep best version of similar images</span>
+        </label>
+        <label class="check-row">
+          <input type="checkbox" id="bestPictureFormat" checked>
+          <span data-i18n="bulkBestPicture">Best format per &lt;picture&gt; group</span>
+        </label>
+        <label class="check-row">
+          <input type="checkbox" id="excludeIcons" checked>
+          <span data-i18n="bulkExcludeIcons">Exclude icons (≤ 64 px)</span>
+        </label>
+        <label class="check-row">
+          <input type="checkbox" id="excludeSvg" checked>
+          <span data-i18n="bulkExcludeSvg">Exclude SVG files</span>
+        </label>
+        <label class="check-row">
+          <input type="checkbox" id="excludeCss" checked>
+          <span data-i18n="bulkExcludeCss">Exclude CSS backgrounds</span>
+        </label>
+      </section>
+
+      <button class="scan-btn" id="scanBtn" data-i18n="bulkScan">Scan page</button>
+
+      <p class="info-note">
+        <span data-i18n="bulkInfo1">Layer 0 images (main page) are pre-selected.</span>
+        <span data-i18n="bulkInfo2">Images from iframes are visible but deselected.</span>
+      </p>
+
+      <div class="warn-note" id="askNote" hidden>
+        <span data-i18n="bulkAskNote">If Chrome asks where to save every file, choose "ZIP archive" or turn off "Ask where to save each file" in Chrome settings.</span>
+        <button type="button" class="link-btn" id="openDownloadSettings" data-i18n="bulkOpenSettings">Open download settings</button>
+      </div>
+
+    </aside>
+
+    <main class="main" id="main">
+      <div class="loading">
+        <div class="spinner"></div>
+        <span data-i18n="bulkScanningPage">Scanning page...</span>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <button class="footer-btn" id="selectAll" data-i18n="bulkSelectAll" disabled>Select all</button>
+    <button class="footer-btn" id="deselectAll" data-i18n="bulkDeselectAll" disabled>Deselect all</button>
+    <span class="status-text" id="status"></span>
+    <select class="format-select" id="format">
+      <option value="original" data-i18n="bulkOriginalFormat">Original format</option>
+      <option value="png">PNG</option>
+      <option value="jpg">JPG</option>
+      <option value="webp">WEBP</option>
+    </select>
+    <select class="format-select" id="downloadMode" data-i18n-title="bulkModeLabel" title="Download mode">
+      <option value="zip" data-i18n="bulkModeZip" selected>ZIP archive</option>
+      <option value="separate" data-i18n="bulkModeSeparate">Separate files</option>
+    </select>
+    <button class="download-btn" id="downloadBtn" data-i18n="bulkDownloadSelected" disabled>Download selected</button>
+  </footer>
+
+  <script src="bulk.js"></script>
+</body>
+
+</html>

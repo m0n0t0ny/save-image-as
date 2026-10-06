@@ -3,9 +3,195 @@
     "message": "Salvar imagem como jpg, png, webp, pdf"
   },
   "extensionDescription": {
-    "message": "Salve imagens diretamente do menu de contexto em formato JPG, PNG, WEBP ou PDF"
+    "message": "Salve imagens como JPG, PNG, WEBP ou PDF com um clique direito. Baixe todas as imagens de uma página de uma vez. 100% local."
   },
   "contextMenuTitle": {
     "message": "Salvar imagem como..."
+  },
+  "reviewPromptText": {
+    "message": "Está gostando do Salvar imagem como? Uma avaliação rápida ajuda outras pessoas a encontrá-lo."
+  },
+  "reviewPromptRate": {
+    "message": "Avaliar"
+  },
+  "reviewPromptLater": {
+    "message": "Mais tarde"
+  },
+  "reviewPromptNever": {
+    "message": "Não, obrigado"
+  },
+  "popupStep1": {
+    "message": "Clique com o botão direito em uma imagem"
+  },
+  "popupStep2": {
+    "message": "Selecione \"$1\""
+  },
+  "popupStep3": {
+    "message": "Escolha PNG, JPG, WEBP ou PDF"
+  },
+  "popupBulkButton": {
+    "message": "Abrir download em massa"
+  },
+  "popupBulkDesc": {
+    "message": "Encontre e baixe todas as imagens desta página"
+  },
+  "popupPrivacy": {
+    "message": "Tudo acontece no navegador. Nenhum arquivo é enviado."
+  },
+  "popupSupport": {
+    "message": "Suporte"
+  },
+  "popupPrivacyLink": {
+    "message": "Privacidade"
+  },
+  "bulkPageTitle": {
+    "message": "Download em massa - Salvar imagem como"
+  },
+  "bulkTitle": {
+    "message": "Download em massa"
+  },
+  "bulkLoading": {
+    "message": "Carregando..."
+  },
+  "bulkLayersLabel": {
+    "message": "Níveis a analisar"
+  },
+  "bulkDepthMain": {
+    "message": "Somente a página principal (nível 0)"
+  },
+  "bulkDepthIframes": {
+    "message": "Página principal + níveis de iframe: $1"
+  },
+  "bulkFilters": {
+    "message": "Filtros"
+  },
+  "bulkMinSize": {
+    "message": "Tamanho mínimo (px)"
+  },
+  "bulkDedup": {
+    "message": "Manter a melhor versão de imagens semelhantes"
+  },
+  "bulkBestPicture": {
+    "message": "Melhor formato por grupo <picture>"
+  },
+  "bulkExcludeIcons": {
+    "message": "Excluir ícones (≤ 64 px)"
+  },
+  "bulkExcludeSvg": {
+    "message": "Excluir arquivos SVG"
+  },
+  "bulkExcludeCss": {
+    "message": "Excluir fundos CSS"
+  },
+  "bulkScan": {
+    "message": "Analisar página"
+  },
+  "bulkScanning": {
+    "message": "Analisando..."
+  },
+  "bulkScanningPage": {
+    "message": "Analisando a página..."
+  },
+  "bulkInfo1": {
+    "message": "As imagens do nível 0 (página principal) já vêm selecionadas."
+  },
+  "bulkInfo2": {
+    "message": "As imagens de iframes aparecem sem seleção."
+  },
+  "bulkSelectAll": {
+    "message": "Selecionar tudo"
+  },
+  "bulkDeselectAll": {
+    "message": "Desmarcar tudo"
+  },
+  "bulkDeselect": {
+    "message": "Desmarcar"
+  },
+  "bulkOriginalFormat": {
+    "message": "Formato original"
+  },
+  "bulkDownloadSelected": {
+    "message": "Baixar selecionadas"
+  },
+  "bulkDownloadN": {
+    "message": "Baixar imagens: $1"
+  },
+  "bulkNoTab": {
+    "message": "Erro: aba não encontrada. Abra esta página pelo popup da extensão."
+  },
+  "bulkScanError": {
+    "message": "Erro na análise: $1"
+  },
+  "bulkNoMatch": {
+    "message": "Nenhuma imagem corresponde aos filtros atuais"
+  },
+  "bulkNoImages": {
+    "message": "Nenhuma imagem encontrada"
+  },
+  "bulkMainPage": {
+    "message": "Página principal"
+  },
+  "bulkIframeLevel": {
+    "message": "iframe de nível $1"
+  },
+  "bulkImageCount": {
+    "message": "Imagens: $1"
+  },
+  "bulkNoPreview": {
+    "message": "Sem prévia"
+  },
+  "bulkSelectedOf": {
+    "message": "Selecionadas: $1 / $2"
+  },
+  "bulkDownloadedOf": {
+    "message": "Baixadas: $1 / $2"
+  },
+  "bulkDone": {
+    "message": "Pronto. Imagens baixadas: $1"
+  },
+  "popupHeading": {
+    "message": "Salvar imagem como"
+  },
+  "popupWebsite": {
+    "message": "Site"
+  },
+  "contextMenuBulk": {
+    "message": "Abrir download em massa..."
+  },
+  "newLabel": {
+    "message": "novo"
+  },
+  "bulkModeLabel": {
+    "message": "Modo de download"
+  },
+  "bulkModeSeparate": {
+    "message": "Arquivos separados"
+  },
+  "bulkModeZip": {
+    "message": "Arquivo ZIP"
+  },
+  "bulkZipProgress": {
+    "message": "Criando ZIP: $1 / $2"
+  },
+  "bulkZipDone": {
+    "message": "Pronto. Arquivo ZIP com $1 imagens"
+  },
+  "bulkDepthAll": {
+    "message": "Todos os níveis (página principal e iframes)"
+  },
+  "bulkDepthAllShort": {
+    "message": "Todos"
+  },
+  "bulkAskNote": {
+    "message": "Se o Chrome perguntar onde salvar cada arquivo, escolha \"Arquivo ZIP\" ou desative \"Perguntar onde salvar cada arquivo antes de fazer download\" nas configurações do Chrome."
+  },
+  "bulkOpenSettings": {
+    "message": "Abrir configurações de download"
+  },
+  "popupBulkHeading": {
+    "message": "Download em massa"
+  },
+  "popupHowToHeading": {
+    "message": "Salvar uma única imagem"
   }
 }

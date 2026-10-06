@@ -44,3 +44,13 @@ node_modules/
 # Temporary files
 *.tmp
 *.temp
+
+# Testi e checklist per lo store (privati)
+store/
+
+# CSV esportati dalla dashboard
+stats/
+
+# Output generato del sito e artefatti di Playwright
+site/public/
+.playwright-mcp/
