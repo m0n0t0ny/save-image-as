@@ -7,6 +7,8 @@ import { LANGS, LANG_NAMES, UPDATED, T, LEGAL } from './content.mjs';
 const SITE_URL = 'https://save-image-as.vercel.app';
 const STORE_URL = 'https://chromewebstore.google.com/detail/ogbmmojbdhijgnijijmmcobjlamkciko';
 const EMAIL = 'anto.bertu@gmail.com';
+// Verifica della proprietà in Google Search Console (deve restare, anche dopo la verifica)
+const GOOGLE_SITE_VERIFICATION = 'g7xri24Xg4MY35Gdu6_DIuYTLGbrwXvKU3q08LzjQKI';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const out = path.join(here, 'public');
@@ -53,6 +55,7 @@ function layout({ lang, title, description, pagePath, body, extraHead = '', noin
   <meta property="og:url" content="${SITE_URL}${p}${pagePath}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#6366f1">
+  <meta name="google-site-verification" content="${GOOGLE_SITE_VERIFICATION}">
   <link rel="icon" type="image/png" href="/assets/icon128.png">
   <link rel="stylesheet" href="/assets/style.css">
   ${extraHead}
