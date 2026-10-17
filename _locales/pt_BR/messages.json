@@ -193,5 +193,41 @@
   },
   "popupHowToHeading": {
     "message": "Salvar uma única imagem"
+  },
+  "welcomeTitle": {
+    "message": "Pronta para usar"
+  },
+  "welcomeLead": {
+    "message": "Salve qualquer imagem em PNG, JPG, WEBP ou PDF com o clique direito. Tudo acontece no seu navegador."
+  },
+  "welcomeTry": {
+    "message": "Experimente agora na imagem abaixo."
+  },
+  "welcomeMenuOpen": {
+    "message": "Abrir imagem em uma nova guia"
+  },
+  "welcomeMenuCopy": {
+    "message": "Copiar imagem"
+  },
+  "welcomeBulkText": {
+    "message": "Clique com o botão direito em uma área vazia de qualquer página e escolha \"$1\" para baixar todas as imagens de uma vez."
+  },
+  "welcomePinHeading": {
+    "message": "Deixe o ícone à mão"
+  },
+  "welcomePinText": {
+    "message": "Opcional: fixe-o na barra do Chrome."
+  },
+  "welcomePinExtensions": {
+    "message": "Extensões"
+  },
+  "welcomePinThen": {
+    "message": "depois"
+  },
+  "welcomePinPin": {
+    "message": "Fixar"
+  },
+  "welcomeClose": {
+    "message": "Você pode fechar esta guia. Ela não aparecerá de novo."
   }
 }

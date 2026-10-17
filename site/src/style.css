@@ -304,16 +304,38 @@ section h2 {
 
 /* Uninstall */
 .reasons { display: grid; gap: 10px; margin: 24px 0; }
-.reasons a {
+.reasons button {
   display: block;
+  width: 100%;
   padding: 14px 18px;
   border: 1px solid var(--border);
   border-radius: 12px;
   background: var(--surface);
   color: var(--text);
-  text-decoration: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
-.reasons a:hover { border-color: var(--accent); }
+.reasons button:hover:not(:disabled) { border-color: var(--accent); }
+.reasons button:disabled { cursor: default; color: var(--muted); }
+.reasons button[aria-pressed="true"] { border-color: var(--accent); background: var(--surface-2); color: var(--text); font-weight: 600; }
+
+.feedback-note { display: grid; gap: 8px; margin: 0 0 24px; }
+.feedback-note[hidden], .feedback-error[hidden] { display: none; }
+.feedback-thanks { margin: 0 0 8px; font-weight: 600; }
+.feedback-note textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  resize: vertical;
+}
+.feedback-note textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.feedback-note .btn { justify-self: start; border: 0; font: inherit; font-weight: 600; cursor: pointer; }
+.feedback-error { color: var(--muted); }
 
 /* Footer */
 .site-footer {

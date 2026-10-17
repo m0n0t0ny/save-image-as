@@ -193,5 +193,41 @@
   },
   "popupHowToHeading": {
     "message": "Save a single image"
+  },
+  "welcomeTitle": {
+    "message": "Ready to use"
+  },
+  "welcomeLead": {
+    "message": "Save any image as PNG, JPG, WEBP or PDF with a right-click. Everything happens in your browser."
+  },
+  "welcomeTry": {
+    "message": "Try it now on the image below."
+  },
+  "welcomeMenuOpen": {
+    "message": "Open image in new tab"
+  },
+  "welcomeMenuCopy": {
+    "message": "Copy image"
+  },
+  "welcomeBulkText": {
+    "message": "Right-click an empty spot on any page and choose \"$1\" to download all its images at once."
+  },
+  "welcomePinHeading": {
+    "message": "Keep the icon at hand"
+  },
+  "welcomePinText": {
+    "message": "Optional: pin it to the Chrome toolbar."
+  },
+  "welcomePinExtensions": {
+    "message": "Extensions"
+  },
+  "welcomePinThen": {
+    "message": "then"
+  },
+  "welcomePinPin": {
+    "message": "Pin"
+  },
+  "welcomeClose": {
+    "message": "You can close this tab. You won't see it again."
   }
 }

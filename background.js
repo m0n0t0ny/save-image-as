@@ -1,3 +1,5 @@
+importScripts('review.js');
+
 // Pagina di feedback mostrata dopo la disinstallazione
 const UNINSTALL_URL = 'https://save-image-as.vercel.app/uninstall';
 
@@ -25,11 +27,24 @@ function bulkMenuTitle(isNew) {
   return isNew ? `${title} (${chrome.i18n.getMessage('newLabel')})` : title;
 }
 
-async function showBulkBadgeIfNew() {
-  const { bulkIsNew = false } = await chrome.storage.local.get('bulkIsNew');
-  if (!bulkIsNew) return;
+// Badge sull'icona: "NEW" per la novità del download in blocco, altrimenti un pallino
+// quando c'è la richiesta di recensione e il popup non è ancora stato aperto
+async function updateBadge() {
+  const { bulkIsNew = false, reviewBadgeSeenAt = 0 } = await chrome.storage.local.get(['bulkIsNew', 'reviewBadgeSeenAt']);
+  let text = '';
+  if (bulkIsNew) text = 'NEW';
+  else {
+    const { due, reviewNextAt } = await getReviewStatus();
+    if (due && reviewBadgeSeenAt !== reviewNextAt) text = '1';
+  }
   chrome.action.setBadgeBackgroundColor({ color: '#6366f1' });
-  chrome.action.setBadgeText({ text: 'NEW' });
+  chrome.action.setBadgeText({ text });
+}
+
+async function markReviewSeen() {
+  const { reviewNextAt } = await getReviewStatus();
+  await chrome.storage.local.set({ reviewBadgeSeenAt: reviewNextAt });
+  updateBadge();
 }
 
 function setBulkMenuTitle(isNew) {
@@ -43,7 +58,7 @@ async function markBulkSeen() {
   const { bulkIsNew = false } = await chrome.storage.local.get('bulkIsNew');
   if (!bulkIsNew) return;
   await chrome.storage.local.set({ bulkIsNew: false });
-  chrome.action.setBadgeText({ text: '' });
+  updateBadge();
   setBulkMenuTitle(false);
 }
 
@@ -51,11 +66,27 @@ async function markBulkSeen() {
 async function incrementSaveCount(amount = 1) {
   const { saveCount = 0 } = await chrome.storage.local.get('saveCount');
   await chrome.storage.local.set({ saveCount: saveCount + amount });
+  await updateBadge();
+}
+
+// Benvenuto alla prima installazione. Il flag in storage.sync segue l'account Google, così
+// un nuovo computer sincronizzato non riapre la pagina; l'attesa dà tempo alla sincronizzazione
+// di portare il flag prima del controllo.
+const WELCOME_DELAY_MS = 5000;
+
+async function showWelcomeOnce() {
+  await new Promise(resolve => setTimeout(resolve, WELCOME_DELAY_MS));
+  try {
+    const { welcomeShown = false } = await chrome.storage.sync.get('welcomeShown');
+    if (welcomeShown) return;
+    await chrome.storage.sync.set({ welcomeShown: true });
+  } catch (e) { /* sync non disponibile: la pagina si mostra comunque una volta */ }
+  chrome.tabs.create({ url: chrome.runtime.getURL('welcome.html') });
 }
 
 chrome.runtime.onStartup.addListener(() => {
   setUninstallUrl();
-  showBulkBadgeIfNew();
+  updateBadge();
 });
 
 chrome.runtime.onInstalled.addListener(async ({ reason, previousVersion }) => {
@@ -73,14 +104,15 @@ chrome.runtime.onInstalled.addListener(async ({ reason, previousVersion }) => {
   chrome.contextMenus.create({ id: 'openBulkFromImage', parentId: 'saveImageAs', title: bulkMenuTitle(false), contexts: image });
   chrome.contextMenus.create({ id: 'openBulkFromPage', title: bulkMenuTitle(false), contexts: ['page'] });
 
+  if (reason === 'install') showWelcomeOnce();
+  // Chi aggiorna conosce già l'estensione: niente benvenuto nemmeno sugli altri suoi computer
+  if (reason === 'update') chrome.storage.sync.set({ welcomeShown: true }).catch(() => {});
   if (reason === 'update' && previousVersion && isOlderVersion(previousVersion, BULK_SINCE)) {
     await chrome.storage.local.set({ bulkIsNew: true });
   }
   const { bulkIsNew = false } = await chrome.storage.local.get('bulkIsNew');
-  if (bulkIsNew) {
-    setBulkMenuTitle(true);
-    showBulkBadgeIfNew();
-  }
+  if (bulkIsNew) setBulkMenuTitle(true);
+  updateBadge();
 });
 
 function openBulkDownload(tab) {
@@ -96,9 +128,14 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 });
 
-chrome.runtime.onMessage.addListener(request => {
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'bulkSeen') markBulkSeen();
-  else if (request.action === 'bulkDownloaded' && request.count > 0) incrementSaveCount(request.count);
+  else if (request.action === 'reviewSeen') markReviewSeen();
+  else if (request.action === 'bulkDownloaded' && request.count > 0) {
+    // Risponde dopo aver aggiornato il conteggio, così la pagina può decidere se chiedere la recensione
+    incrementSaveCount(request.count).then(() => sendResponse(true));
+    return true;
+  }
 });
 
 // ─── CONVERSIONE ───────────────────────────────────────────────────────────────

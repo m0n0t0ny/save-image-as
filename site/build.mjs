@@ -375,30 +375,57 @@ function uninstall() {
   const extra = {
     pt: {
       title: 'Que pena que você está saindo',
-      lead: 'O que deu errado? Um clique abre um e-mail já preenchido: isso ajuda muito a melhorar a extensão.',
+      lead: 'O que deu errado? Basta um clique, de forma anônima.',
+      thanks: 'Obrigado, sua resposta foi registrada.',
+      noteLabel: 'Quer acrescentar algo? (opcional)',
+      send: 'Enviar',
+      sent: 'Obrigado!',
+      error: 'Não foi possível enviar. Você pode nos escrever um e-mail.',
+      mail: 'Escrever um e-mail',
       reasons: ['Não funcionou em um site', 'A imagem salva ficou com baixa qualidade', 'Preciso de um formato que não existe', 'O download em massa não encontrou minhas imagens', 'Só precisei uma vez', 'Encontrei uma alternativa melhor'],
       reinstall: 'Mudou de ideia? Reinstale'
     },
     fr: {
       title: 'Dommage de vous voir partir',
-      lead: 'Qu\'est-ce qui n\'a pas marché ? Un clic ouvre un e-mail prérempli : cela nous aide vraiment à améliorer l\'extension.',
+      lead: 'Qu\'est-ce qui n\'a pas marché ? Un clic suffit, de façon anonyme.',
+      thanks: 'Merci, votre réponse a été enregistrée.',
+      noteLabel: 'Quelque chose à ajouter ? (facultatif)',
+      send: 'Envoyer',
+      sent: 'Merci !',
+      error: 'L\'envoi a échoué. Vous pouvez nous écrire un e-mail.',
+      mail: 'Écrire un e-mail',
       reasons: ['Elle ne marchait pas sur un site', 'L\'image enregistrée était de mauvaise qualité', 'Il me manque un format', 'Le téléchargement en masse ne trouvait pas mes images', 'Je n\'en avais besoin qu\'une fois', 'J\'ai trouvé une meilleure alternative'],
       reinstall: 'Vous avez changé d\'avis ? Réinstallez-la'
     },
     de: {
       title: 'Schade, dass du gehst',
-      lead: 'Was hat nicht gepasst? Ein Klick öffnet eine vorausgefüllte E-Mail: das hilft sehr, die Erweiterung zu verbessern.',
+      lead: 'Was hat nicht gepasst? Ein Klick genügt, anonym.',
+      thanks: 'Danke, deine Antwort wurde gespeichert.',
+      noteLabel: 'Möchtest du etwas ergänzen? (optional)',
+      send: 'Senden',
+      sent: 'Danke!',
+      error: 'Senden fehlgeschlagen. Du kannst uns stattdessen eine E-Mail schreiben.',
+      mail: 'E-Mail schreiben',
       reasons: ['Es hat auf einer Website nicht funktioniert', 'Das gespeicherte Bild hatte schlechte Qualität', 'Mir fehlt ein Format', 'Der Massen-Download hat meine Bilder nicht gefunden', 'Ich brauchte es nur einmal', 'Ich habe eine bessere Alternative gefunden'],
       reinstall: 'Meinung geändert? Neu installieren'
     }
   };
   const dict = { en: T.en.uninstall, it: T.it.uninstall, es: T.es.uninstall, ...extra };
 
+  // Un clic sul motivo lo invia in forma anonima a /api/feedback; la nota è facoltativa.
+  // Se l'invio non riesce resta l'email già compilata come ripiego.
   const body = `
     <article class="doc">
       <h1 id="title">${T.en.uninstall.title}</h1>
       <p id="lead">${T.en.uninstall.lead}</p>
       <div class="reasons" id="reasons"></div>
+      <form class="feedback-note" id="noteForm" hidden>
+        <p class="feedback-thanks" id="thanks"></p>
+        <label for="note" id="noteLabel"></label>
+        <textarea id="note" maxlength="500" rows="3"></textarea>
+        <button class="btn btn-small" type="submit" id="send"></button>
+      </form>
+      <p class="feedback-error" id="error" hidden><span id="errorText"></span> <a id="mail"></a></p>
       <p><a id="reinstall" href="${storeLink('uninstall')}">${T.en.uninstall.reinstall}</a></p>
     </article>
     <script>
@@ -408,18 +435,47 @@ function uninstall() {
       const lang = D[raw.slice(0, 2)] ? raw.slice(0, 2) : 'en';
       const t = D[lang];
       const version = (params.get('v') || 'unknown').replace(/[^0-9.]/g, '');
+      const $ = id => document.getElementById(id);
       document.documentElement.lang = lang;
-      document.getElementById('title').textContent = t.title;
-      document.getElementById('lead').textContent = t.lead;
-      document.getElementById('reinstall').textContent = t.reinstall;
-      const box = document.getElementById('reasons');
+      for (const key of ['title', 'lead', 'thanks', 'noteLabel', 'send', 'reinstall']) $(key).textContent = t[key];
+      $('errorText').textContent = t.error;
+      $('mail').textContent = t.mail;
+
+      const send = data => fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, v: version, lang })
+      }).then(r => { if (!r.ok) throw new Error(r.status); });
+
+      let chosen = -1;
+      const box = $('reasons');
       t.reasons.forEach((reason, i) => {
-        const a = document.createElement('a');
-        const subject = '[Uninstall] Save Image As v' + version + ' - reason ' + (i + 1);
-        const bodyText = reason + '\\n\\n(lang: ' + raw + ', version: ' + version + ')\\n\\n';
-        a.href = 'mailto:${EMAIL}?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyText);
-        a.textContent = reason;
-        box.appendChild(a);
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = reason;
+        b.addEventListener('click', async () => {
+          chosen = i;
+          box.querySelectorAll('button').forEach(x => { x.disabled = true; x.setAttribute('aria-pressed', x === b); });
+          try {
+            await send({ reason: i });
+            $('noteForm').hidden = false;
+            $('note').focus();
+          } catch (e) {
+            const subject = '[Uninstall] Save Image As v' + version + ' - reason ' + (i + 1);
+            const bodyText = reason + '\\n\\n(lang: ' + raw + ', version: ' + version + ')\\n\\n';
+            $('mail').href = 'mailto:${EMAIL}?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyText);
+            $('error').hidden = false;
+          }
+        });
+        box.appendChild(b);
+      });
+
+      $('noteForm').addEventListener('submit', async event => {
+        event.preventDefault();
+        const note = $('note').value.trim();
+        $('send').disabled = true;
+        if (note) { try { await send({ reason: chosen, note }); } catch (e) { /* il motivo è già stato registrato */ } }
+        $('noteForm').replaceChildren(Object.assign(document.createElement('p'), { className: 'feedback-thanks', textContent: t.sent }));
       });
     </script>`;
 

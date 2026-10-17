@@ -3,7 +3,7 @@
 # Privacy Policy - Save Image As Extension
 
 **Effective Date:** March 16, 2026
-**Last Updated:** October 6, 2026
+**Last Updated:** October 17, 2026
 
 ## Overview
 
@@ -38,8 +38,8 @@ The Extension requires certain permissions to function:
 - **Data Access:** Only accesses the specific image you right-click on for conversion purposes
 
 ### 4. Storage (`storage`)
-- **Purpose:** Keep a few local settings: a counter of saved images and your answer to the rating request (so a rating is requested at most once), whether you have seen the new bulk download feature, and the bulk download mode you chose
-- **Data Access:** Only these settings. They stay on your device and are never transmitted
+- **Purpose:** Keep a few settings: a counter of saved images and your answer to the rating request (so a rating is requested at most once), whether you have seen the new bulk download feature, whether the welcome page has been shown, and the bulk download mode you chose
+- **Data Access:** Only these settings. They are never sent to us (see "Data Storage" for the two values kept in Chrome sync storage)
 
 ### 5. Host Permissions (`<all_urls>`)
 - **Purpose:** Allow the Extension to work on any website where you want to save images
@@ -63,11 +63,11 @@ PDF files are created by the Extension's own code, entirely locally in your brow
 
 All image processing happens in real-time and temporarily in your browser's memory. Once the conversion is complete, no image data is retained.
 
-The Extension stores only these settings locally on your device: the number of images saved and your answer to the rating request (rate, later, no thanks), whether you have already seen the new bulk download feature, and the download mode chosen in bulk download (ZIP archive or separate files). None of these values identify you; they are never transmitted and are removed when you uninstall the Extension.
+The Extension stores only these settings locally on your device: the number of images saved and your answer to the rating request (rate, later, no thanks), whether you have already seen the new bulk download feature, and the download mode chosen in bulk download (ZIP archive or separate files). Two of these values, your final answer to the rating request and whether the welcome page has already been shown after installation, are also kept in Chrome's sync storage: if Chrome sync is on, Chrome copies them to your other computers so you are not asked again. None of these values identify you; they are never sent to us and are removed when you uninstall the Extension.
 
 ## Uninstall Feedback Page
 
-When you uninstall the Extension, Chrome opens a feedback page on https://save-image-as.vercel.app. The page address includes only the Extension version and your browser language, so the page can be shown in your language. Sending feedback is optional and happens only if you choose to send an email.
+When you uninstall the Extension, Chrome opens a feedback page on https://save-image-as.vercel.app. The page address includes only the Extension version and your browser language, so the page can be shown in your language. Answering is optional. If you pick a reason, the page sends only that reason, the Extension version and the language, stored as anonymous counts. If you also write a note, it is stored with the date, the reason, the version and the language; please do not include personal information. No IP addresses or other identifiers are stored. The answers are kept in a database provided by Upstash, Inc. through Vercel.
 
 ## Children's Privacy
 

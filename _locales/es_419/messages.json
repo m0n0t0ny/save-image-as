@@ -193,5 +193,41 @@
   },
   "popupHowToHeading": {
     "message": "Guardar una sola imagen"
+  },
+  "welcomeTitle": {
+    "message": "Lista para usar"
+  },
+  "welcomeLead": {
+    "message": "Guarda cualquier imagen en PNG, JPG, WEBP o PDF con el clic derecho. Todo ocurre en tu navegador."
+  },
+  "welcomeTry": {
+    "message": "Pruébala ahora con la imagen de abajo."
+  },
+  "welcomeMenuOpen": {
+    "message": "Abrir imagen en una pestaña nueva"
+  },
+  "welcomeMenuCopy": {
+    "message": "Copiar imagen"
+  },
+  "welcomeBulkText": {
+    "message": "Haz clic derecho en una zona vacía de cualquier página y elige \"$1\" para descargar todas sus imágenes a la vez."
+  },
+  "welcomePinHeading": {
+    "message": "Ten el ícono a mano"
+  },
+  "welcomePinText": {
+    "message": "Opcional: fíjalo en la barra de Chrome."
+  },
+  "welcomePinExtensions": {
+    "message": "Extensiones"
+  },
+  "welcomePinThen": {
+    "message": "luego"
+  },
+  "welcomePinPin": {
+    "message": "Fijar"
+  },
+  "welcomeClose": {
+    "message": "Puedes cerrar esta pestaña. No volverás a verla."
   }
 }

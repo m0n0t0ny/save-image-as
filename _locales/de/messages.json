@@ -193,5 +193,41 @@
   },
   "popupHowToHeading": {
     "message": "Ein einzelnes Bild speichern"
+  },
+  "welcomeTitle": {
+    "message": "Startklar"
+  },
+  "welcomeLead": {
+    "message": "Speichere jedes Bild per Rechtsklick als PNG, JPG, WEBP oder PDF. Alles passiert in deinem Browser."
+  },
+  "welcomeTry": {
+    "message": "Probiere es gleich mit dem Bild unten aus."
+  },
+  "welcomeMenuOpen": {
+    "message": "Bild in neuem Tab öffnen"
+  },
+  "welcomeMenuCopy": {
+    "message": "Bild kopieren"
+  },
+  "welcomeBulkText": {
+    "message": "Klicke mit der rechten Maustaste auf eine leere Stelle einer Seite und wähle \"$1\", um alle Bilder auf einmal herunterzuladen."
+  },
+  "welcomePinHeading": {
+    "message": "Das Symbol griffbereit halten"
+  },
+  "welcomePinText": {
+    "message": "Optional: in der Chrome-Symbolleiste anpinnen."
+  },
+  "welcomePinExtensions": {
+    "message": "Erweiterungen"
+  },
+  "welcomePinThen": {
+    "message": "dann"
+  },
+  "welcomePinPin": {
+    "message": "Anpinnen"
+  },
+  "welcomeClose": {
+    "message": "Du kannst diesen Tab schließen. Er erscheint nicht wieder."
   }
 }

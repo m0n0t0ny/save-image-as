@@ -651,12 +651,32 @@ downloadBtn.addEventListener('click', async () => {
   let succeeded = 0;
   try {
     succeeded = zip ? await downloadZip(images, format) : await downloadSeparate(images, format);
-    if (succeeded) chrome.runtime.sendMessage({ action: 'bulkDownloaded', count: succeeded });
   } finally {
     scanBtn.disabled = false;
     updateFooter();
     statusEl.textContent = zip ? t('bulkZipDone', succeeded) : t('bulkDone', succeeded);
   }
+  if (succeeded) {
+    await chrome.runtime.sendMessage({ action: 'bulkDownloaded', count: succeeded });
+    maybeAskReview();
+  }
 });
+
+// Richiesta di recensione dopo un download riuscito: al massimo una volta per pagina
+let reviewAsked = false;
+async function maybeAskReview() {
+  if (reviewAsked) return;
+  const { due } = await getReviewStatus();
+  if (!due) return;
+  reviewAsked = true;
+  chrome.runtime.sendMessage({ action: 'reviewSeen' });
+  showReviewPrompt({
+    banner: $('reviewBar'),
+    text: $('reviewBarText'),
+    rate: $('reviewBarRate'),
+    later: $('reviewBarLater'),
+    never: $('reviewBarNever')
+  });
+}
 
 scan();

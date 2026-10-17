@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save Image As</title>
+  <style>
+    :root {
+      --bg: #f6f5ff;
+      --surface: #ffffff;
+      --ink: #1e1b4b;
+      --muted: #5b5790;
+      --line: #e2def8;
+      --accent: #6366f1;
+      --accent-strong: #4f46e5;
+      --accent-soft: #eeedfd;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+    header img { width: 24px; height: 24px; }
+    header h1 { margin: 0; font-size: 15px; font-weight: 600; }
+
+    main { max-width: 680px; margin: 0 auto; padding: 40px 20px 48px; }
+    main > h2 { margin: 0 0 4px; font-size: 24px; font-weight: 600; }
+    main > p { margin: 0 0 24px; color: var(--muted); font-size: 15px; }
+
+    /* Raggi concentrici: card 22 = elementi interni 8 + padding 14 */
+    .card {
+      margin-bottom: 14px;
+      padding: 14px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+    }
+    .card h3 { margin: 0 0 2px; padding: 4px 6px 0; font-size: 15px; font-weight: 600; }
+    .card > p { margin: 0; padding: 0 6px; color: var(--muted); }
+
+    .demo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: flex-start;
+      margin-top: 14px;
+    }
+    .demo img {
+      display: block;
+      width: 240px;
+      height: 160px;
+      border-radius: 8px;
+      cursor: context-menu;
+    }
+
+    /* Menu del clic destro disegnato: esterno 8 = voce 4 + padding 4 */
+    .menu {
+      padding: 4px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    .menu div { padding: 4px 10px; border-radius: 4px; color: var(--muted); white-space: nowrap; }
+    .menu .sep { height: 1px; margin: 4px 0; padding: 0; border-radius: 0; background: var(--line); }
+    .menu .hl {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .submenu { margin-top: 56px; }
+
+    .steps { margin: 14px 0 4px 6px; padding-left: 18px; }
+    .steps li + li { margin-top: 2px; }
+    .steps li::marker { color: var(--muted); }
+
+    .row { display: flex; gap: 14px; }
+    .row .card { flex: 1; }
+
+    .pin {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin: 10px 0 4px 6px;
+      color: var(--muted);
+    }
+    .key {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 1px 8px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .close-note { margin-top: 20px; color: var(--muted); font-size: 13px; text-align: center; }
+
+    @media (max-width: 600px) {
+      .row { flex-direction: column; gap: 0; }
+      .submenu { margin-top: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="icons/icon48.png" alt="">
+    <h1>Save Image As</h1>
+  </header>
+
+  <main>
+    <h2 data-i18n="welcomeTitle">Ready to use</h2>
+    <p data-i18n="welcomeLead">Save any image as PNG, JPG, WEBP or PDF with a right-click. Everything happens in your browser.</p>
+
+    <section class="card">
+      <h3 data-i18n="popupHowToHeading">Save a single image</h3>
+      <p data-i18n="welcomeTry">Try it now on the image below.</p>
+      <div class="demo">
+        <img src="images/welcome-demo.png" width="240" height="160" alt="">
+        <div class="menu" aria-hidden="true">
+          <div data-i18n="welcomeMenuOpen">Open image in new tab</div>
+          <div data-i18n="welcomeMenuCopy">Copy image</div>
+          <div class="sep"></div>
+          <div class="hl"><span id="menuSave">Save image as...</span><span>›</span></div>
+        </div>
+        <div class="menu submenu" aria-hidden="true">
+          <div class="hl">PNG</div>
+          <div>JPG</div>
+          <div>WEBP</div>
+          <div>PDF</div>
+        </div>
+      </div>
+      <ol class="steps">
+        <li data-i18n="popupStep1">Right-click on any image</li>
+        <li id="step2">Select "Save image as..."</li>
+        <li data-i18n="popupStep3">Choose PNG, JPG, WEBP or PDF</li>
+      </ol>
+    </section>
+
+    <div class="row">
+      <section class="card">
+        <h3 data-i18n="popupBulkHeading">Bulk download</h3>
+        <p id="bulkText">Right-click an empty spot on any page and choose "Open Bulk Download..." to download all its images at once.</p>
+      </section>
+      <section class="card">
+        <h3 data-i18n="welcomePinHeading">Keep the icon at hand</h3>
+        <p data-i18n="welcomePinText">Optional: pin it to the Chrome toolbar.</p>
+        <div class="pin">
+          <span class="key">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 11H19V7a2 2 0 00-2-2h-4V3.5a2.5 2.5 0 00-5 0V5H4a2 2 0 00-2 2v3.8h1.5a2.7 2.7 0 010 5.4H2V20a2 2 0 002 2h3.8v-1.5a2.7 2.7 0 015.4 0V22H17a2 2 0 002-2v-4h1.5a2.5 2.5 0 000-5z"/></svg>
+            <span data-i18n="welcomePinExtensions">Extensions</span>
+          </span>
+          <span data-i18n="welcomePinThen">then</span>
+          <span class="key">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 3l5 5-3 1-4 4 1 5-2 2-4-4-5 5-1-1 5-5-4-4 2-2 5 1 4-4z"/></svg>
+            <span data-i18n="welcomePinPin">Pin</span>
+          </span>
+        </div>
+      </section>
+    </div>
+
+    <p class="close-note" data-i18n="welcomeClose">You can close this tab. You won't see it again.</p>
+  </main>
+
+  <script src="welcome.js"></script>
+</body>
+
+</html>

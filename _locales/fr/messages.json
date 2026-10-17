@@ -193,5 +193,41 @@
   },
   "popupHowToHeading": {
     "message": "Enregistrer une seule image"
+  },
+  "welcomeTitle": {
+    "message": "Prête à l'emploi"
+  },
+  "welcomeLead": {
+    "message": "Enregistrez n'importe quelle image en PNG, JPG, WEBP ou PDF d'un clic droit. Tout se passe dans votre navigateur."
+  },
+  "welcomeTry": {
+    "message": "Essayez tout de suite sur l'image ci-dessous."
+  },
+  "welcomeMenuOpen": {
+    "message": "Ouvrir l'image dans un nouvel onglet"
+  },
+  "welcomeMenuCopy": {
+    "message": "Copier l'image"
+  },
+  "welcomeBulkText": {
+    "message": "Faites un clic droit sur une zone vide de n'importe quelle page et choisissez \"$1\" pour télécharger toutes ses images d'un coup."
+  },
+  "welcomePinHeading": {
+    "message": "Gardez l'icône à portée de main"
+  },
+  "welcomePinText": {
+    "message": "Facultatif : épinglez-la dans la barre de Chrome."
+  },
+  "welcomePinExtensions": {
+    "message": "Extensions"
+  },
+  "welcomePinThen": {
+    "message": "puis"
+  },
+  "welcomePinPin": {
+    "message": "Épingler"
+  },
+  "welcomeClose": {
+    "message": "Vous pouvez fermer cet onglet. Vous ne le reverrez plus."
   }
 }

@@ -1,7 +1,7 @@
 // Testi del sito, una voce per lingua. Le chiavi devono essere uguali in tutte le lingue.
 export const LANGS = ['en', 'it', 'es'];
 export const LANG_NAMES = { en: 'English', it: 'Italiano', es: 'Español' };
-export const UPDATED = { en: 'October 6, 2026', it: '6 ottobre 2026', es: '6 de octubre de 2026' };
+export const UPDATED = { en: 'October 17, 2026', it: '17 ottobre 2026', es: '17 de octubre de 2026' };
 
 export const T = {
   en: {
@@ -125,7 +125,13 @@ export const T = {
     notFound: { title: 'Page not found', lead: 'The page you are looking for does not exist.', back: 'Back to the home page' },
     uninstall: {
       title: 'Sorry to see you go',
-      lead: 'What went wrong? One click opens a pre-filled email: it really helps improve the extension.',
+      lead: 'What went wrong? One click is enough, and it is anonymous.',
+      thanks: 'Thank you, your answer has been recorded.',
+      noteLabel: 'Anything to add? (optional)',
+      send: 'Send',
+      sent: 'Thank you!',
+      error: 'Sending failed. You can write to us by email instead.',
+      mail: 'Write an email',
       reasons: ['It did not work on a website', 'The saved image had low quality', 'I need a format that is missing', 'Bulk download did not find my images', 'I only needed it once', 'I found a better alternative'],
       reinstall: 'Changed your mind? Reinstall it'
     }
@@ -252,7 +258,13 @@ export const T = {
     notFound: { title: 'Pagina non trovata', lead: 'La pagina che cerchi non esiste.', back: 'Torna alla home' },
     uninstall: {
       title: 'Ci dispiace vederti andare via',
-      lead: 'Cosa non ha funzionato? Un clic apre un\'email già compilata: ci aiuta davvero a migliorare l\'estensione.',
+      lead: 'Cosa non ha funzionato? Basta un clic, in forma anonima.',
+      thanks: 'Grazie, la risposta è stata registrata.',
+      noteLabel: 'Vuoi aggiungere qualcosa? (facoltativo)',
+      send: 'Invia',
+      sent: 'Grazie!',
+      error: 'Invio non riuscito. Puoi scriverci un\'email.',
+      mail: 'Scrivi un\'email',
       reasons: ['Non funzionava su un sito', 'L\'immagine salvata aveva una qualità bassa', 'Mi serve un formato che manca', 'Il download in blocco non trovava le immagini', 'Mi serviva solo una volta', 'Ho trovato un\'alternativa migliore'],
       reinstall: 'Ci hai ripensato? Reinstallala'
     }
@@ -379,7 +391,13 @@ export const T = {
     notFound: { title: 'Página no encontrada', lead: 'La página que buscas no existe.', back: 'Volver al inicio' },
     uninstall: {
       title: 'Lamentamos que te vayas',
-      lead: '¿Qué salió mal? Un clic abre un correo ya redactado: nos ayuda mucho a mejorar la extensión.',
+      lead: '¿Qué salió mal? Basta un clic y es anónimo.',
+      thanks: 'Gracias, tu respuesta se ha registrado.',
+      noteLabel: '¿Quieres añadir algo? (opcional)',
+      send: 'Enviar',
+      sent: '¡Gracias!',
+      error: 'No se pudo enviar. Puedes escribirnos un correo.',
+      mail: 'Escribir un correo',
       reasons: ['No funcionó en un sitio web', 'La imagen guardada tenía baja calidad', 'Necesito un formato que no está', 'La descarga masiva no encontró mis imágenes', 'Solo la necesitaba una vez', 'Encontré una alternativa mejor'],
       reinstall: '¿Cambiaste de idea? Vuelve a instalarla'
     }
@@ -407,7 +425,8 @@ export const LEGAL = {
   <li>whether you have already seen the new bulk download feature, so the "new" label is shown only until you open it;</li>
   <li>the download mode you chose in bulk download (ZIP archive or separate files).</li>
 </ul>
-<p>None of these values identify you. They never leave your device and are deleted when you remove the extension.</p>
+<p>Two of these values are also kept in Chrome's sync storage: your final answer to the rating request and whether the welcome page has already been shown after installation. If Chrome sync is on, Chrome copies them to your other computers, so you are not asked again there. They are never sent to us.</p>
+<p>None of these values identify you and they are deleted when you remove the extension.</p>
 
 <h2>Permissions</h2>
 <ul>
@@ -418,7 +437,7 @@ export const LEGAL = {
 </ul>
 
 <h2>Uninstall page</h2>
-<p>When you remove the extension, Chrome opens a feedback page on this website. Its address contains only the extension version and your browser language, so the page can be shown in your language. Sending feedback is optional and happens only if you choose to send an email.</p>
+<p>When you remove the extension, Chrome opens a feedback page on this website. Its address contains only the extension version and your browser language, so the page can be shown in your language. Answering is optional. If you pick a reason, the page sends us only that reason, the extension version and the language, which we store as anonymous counts. If you also write a note, we store it with the date, the reason, the version and the language; please do not include personal information. We do not store IP addresses or other identifiers. The answers are kept in a database provided by Upstash, Inc. through Vercel.</p>
 
 <h2>This website</h2>
 <p>The website uses no cookies, no analytics and no third-party trackers. It is hosted by Vercel Inc., which, like any hosting provider, processes technical data such as IP addresses in server logs to deliver the pages and protect the service. If you write to us by email, we use your address and message only to reply.</p>
@@ -491,7 +510,8 @@ export const LEGAL = {
   <li>se hai già visto la novità del download in blocco, per mostrare l'etichetta "nuovo" solo finché non lo apri;</li>
   <li>la modalità di download scelta nel download in blocco (archivio ZIP o file separati).</li>
 </ul>
-<p>Nessuno di questi valori ti identifica. Non lasciano mai il tuo dispositivo e vengono cancellati quando rimuovi l'estensione.</p>
+<p>Due di questi valori sono salvati anche nella memoria sincronizzata di Chrome: la tua risposta definitiva alla richiesta di valutazione e se la pagina di benvenuto è già stata mostrata dopo l'installazione. Se la sincronizzazione di Chrome è attiva, Chrome li copia sugli altri tuoi computer, così non ti viene chiesto di nuovo. Non vengono mai inviati a noi.</p>
+<p>Nessuno di questi valori ti identifica e vengono cancellati quando rimuovi l'estensione.</p>
 
 <h2>Permessi</h2>
 <ul>
@@ -502,7 +522,7 @@ export const LEGAL = {
 </ul>
 
 <h2>Pagina di disinstallazione</h2>
-<p>Quando rimuovi l'estensione, Chrome apre una pagina di feedback su questo sito. L'indirizzo contiene solo la versione dell'estensione e la lingua del browser, per mostrare la pagina nella tua lingua. Inviare un feedback è facoltativo e avviene solo se scegli di mandare un'email.</p>
+<p>Quando rimuovi l'estensione, Chrome apre una pagina di feedback su questo sito. L'indirizzo contiene solo la versione dell'estensione e la lingua del browser, per mostrare la pagina nella tua lingua. Rispondere è facoltativo. Se scegli un motivo, la pagina ci invia solo quel motivo, la versione dell'estensione e la lingua, che conserviamo come conteggi anonimi. Se scrivi anche una nota, la conserviamo con la data, il motivo, la versione e la lingua: ti chiediamo di non inserire dati personali. Non conserviamo indirizzi IP né altri identificativi. Le risposte sono conservate in un database fornito da Upstash, Inc. tramite Vercel.</p>
 
 <h2>Questo sito</h2>
 <p>Il sito non usa cookie, strumenti di statistica o tracciamento di terze parti. È ospitato da Vercel Inc. che, come ogni fornitore di hosting, tratta dati tecnici come gli indirizzi IP nei log del server per erogare le pagine e proteggere il servizio. Se ci scrivi un'email, usiamo il tuo indirizzo e il messaggio solo per risponderti.</p>
@@ -575,7 +595,8 @@ export const LEGAL = {
   <li>si ya viste la novedad de la descarga masiva, para mostrar la etiqueta "nuevo" solo hasta que la abras;</li>
   <li>el modo de descarga elegido en la descarga masiva (archivo ZIP o archivos separados).</li>
 </ul>
-<p>Ninguno de estos valores te identifica. Nunca salen de tu dispositivo y se borran al quitar la extensión.</p>
+<p>Dos de estos valores también se guardan en el almacenamiento sincronizado de Chrome: tu respuesta definitiva a la solicitud de valoración y si la página de bienvenida ya se mostró tras la instalación. Si la sincronización de Chrome está activada, Chrome los copia a tus otros equipos para no volver a preguntarte. Nunca se nos envían.</p>
+<p>Ninguno de estos valores te identifica y se borran al quitar la extensión.</p>
 
 <h2>Permisos</h2>
 <ul>
@@ -586,7 +607,7 @@ export const LEGAL = {
 </ul>
 
 <h2>Página de desinstalación</h2>
-<p>Cuando quitas la extensión, Chrome abre una página de comentarios en este sitio. Su dirección contiene solo la versión de la extensión y el idioma del navegador, para mostrar la página en tu idioma. Enviar comentarios es opcional y solo ocurre si decides mandar un correo.</p>
+<p>Cuando quitas la extensión, Chrome abre una página de comentarios en este sitio. Su dirección contiene solo la versión de la extensión y el idioma del navegador, para mostrar la página en tu idioma. Responder es opcional. Si eliges un motivo, la página nos envía solo ese motivo, la versión de la extensión y el idioma, que guardamos como recuentos anónimos. Si además escribes una nota, la guardamos con la fecha, el motivo, la versión y el idioma; te pedimos no incluir datos personales. No guardamos direcciones IP ni otros identificadores. Las respuestas se guardan en una base de datos proporcionada por Upstash, Inc. a través de Vercel.</p>
 
 <h2>Este sitio web</h2>
 <p>El sitio no usa cookies, estadísticas ni rastreadores de terceros. Está alojado por Vercel Inc., que, como cualquier proveedor de alojamiento, trata datos técnicos como las direcciones IP en los registros del servidor para entregar las páginas y proteger el servicio. Si nos escribes un correo, usamos tu dirección y tu mensaje solo para responderte.</p>

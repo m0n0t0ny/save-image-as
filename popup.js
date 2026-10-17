@@ -34,42 +34,15 @@ document.getElementById('bulkBtn').addEventListener('click', () => {
   });
 });
 
-// Richiesta di recensione: compare solo dopo un certo numero di salvataggi riusciti
-const REVIEW_URL = 'https://chromewebstore.google.com/detail/ogbmmojbdhijgnijijmmcobjlamkciko/reviews';
-const REVIEW_FIRST_THRESHOLD = 15;  // salvataggi prima della prima richiesta
-const REVIEW_SNOOZE_STEP = 50;      // salvataggi aggiuntivi dopo "Più tardi"
-
-async function setupReviewBanner() {
-  const { saveCount = 0, reviewState = 'pending', reviewNextAt = REVIEW_FIRST_THRESHOLD } =
-    await chrome.storage.local.get(['saveCount', 'reviewState', 'reviewNextAt']);
-
-  if (reviewState !== 'pending' || saveCount < reviewNextAt) return;
-
-  const banner = document.getElementById('reviewBanner');
-  document.getElementById('reviewText').textContent = chrome.i18n.getMessage('reviewPromptText');
-
-  const rate = document.getElementById('reviewRate');
-  const later = document.getElementById('reviewLater');
-  const never = document.getElementById('reviewNever');
-  rate.textContent = chrome.i18n.getMessage('reviewPromptRate');
-  later.textContent = chrome.i18n.getMessage('reviewPromptLater');
-  never.textContent = chrome.i18n.getMessage('reviewPromptNever');
-
-  rate.addEventListener('click', async () => {
-    await chrome.storage.local.set({ reviewState: 'done' });
-    chrome.tabs.create({ url: REVIEW_URL });
-    banner.hidden = true;
+// Richiesta di recensione (logica in review.js). Aprire il popup toglie il pallino sull'icona.
+getReviewStatus().then(({ due }) => {
+  if (!due) return;
+  chrome.runtime.sendMessage({ action: 'reviewSeen' });
+  showReviewPrompt({
+    banner: document.getElementById('reviewBanner'),
+    text: document.getElementById('reviewText'),
+    rate: document.getElementById('reviewRate'),
+    later: document.getElementById('reviewLater'),
+    never: document.getElementById('reviewNever')
   });
-  later.addEventListener('click', async () => {
-    await chrome.storage.local.set({ reviewNextAt: saveCount + REVIEW_SNOOZE_STEP });
-    banner.hidden = true;
-  });
-  never.addEventListener('click', async () => {
-    await chrome.storage.local.set({ reviewState: 'never' });
-    banner.hidden = true;
-  });
-
-  banner.hidden = false;
-}
-
-setupReviewBanner();
+});
