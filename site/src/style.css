@@ -289,6 +289,18 @@ section h2 {
 
 .support { text-align: center; }
 .support p { color: var(--muted); margin: 0 auto 24px; max-width: 36em; }
+.support .support-alt { margin: 18px auto 0; font-size: 15px; }
+.support-alt strong { color: var(--text); font-weight: 600; user-select: all; }
+.support-alt a { color: var(--accent-strong); }
+.link-btn {
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  color: var(--accent-strong);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 /* Legal pages */
 .doc {

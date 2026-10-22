@@ -114,7 +114,11 @@ export const T = {
     support: {
       title: 'Need help or have an idea?',
       lead: 'Write to us: we read every message and answer in English, Italian and Spanish.',
-      cta: 'Send an email'
+      cta: 'Send an email',
+      alt: 'Or write to',
+      copy: 'Copy',
+      copied: 'Copied',
+      gmail: 'Open in Gmail'
     },
     footer: {
       privacy: 'Privacy policy',
@@ -247,7 +251,11 @@ export const T = {
     support: {
       title: 'Ti serve aiuto o hai un\'idea?',
       lead: 'Scrivici: leggiamo ogni messaggio e rispondiamo in italiano, inglese e spagnolo.',
-      cta: 'Invia un\'email'
+      cta: 'Invia un\'email',
+      alt: 'Oppure scrivi a',
+      copy: 'Copia',
+      copied: 'Copiato',
+      gmail: 'Apri in Gmail'
     },
     footer: {
       privacy: 'Privacy',
@@ -380,7 +388,11 @@ export const T = {
     support: {
       title: '¿Necesitas ayuda o tienes una idea?',
       lead: 'Escríbenos: leemos cada mensaje y respondemos en español, inglés e italiano.',
-      cta: 'Enviar un correo'
+      cta: 'Enviar un correo',
+      alt: 'O escríbenos a',
+      copy: 'Copiar',
+      copied: 'Copiado',
+      gmail: 'Abrir en Gmail'
     },
     footer: {
       privacy: 'Privacidad',

@@ -215,8 +215,20 @@ function home(lang) {
         <h2>${t.support.title}</h2>
         <p>${t.support.lead}</p>
         <a class="btn" href="mailto:${EMAIL}?subject=${encodeURIComponent(brandName(lang))}">${t.support.cta}</a>
+        <p class="support-alt">
+          ${t.support.alt} <strong>${EMAIL}</strong>
+          <button type="button" class="link-btn" id="copyEmail" data-copied="${t.support.copied}">${t.support.copy}</button>
+          · <a href="https://mail.google.com/mail/?view=cm&amp;to=${EMAIL}&amp;su=${encodeURIComponent(brandName(lang))}" target="_blank" rel="noopener">${t.support.gmail}</a>
+        </p>
       </div>
-    </section>`;
+    </section>
+    <script>
+      // Il link mailto non fa nulla se sul computer non c'è un programma di posta predefinito
+      document.getElementById('copyEmail').addEventListener('click', async e => {
+        const b = e.currentTarget;
+        try { await navigator.clipboard.writeText('${EMAIL}'); b.textContent = b.dataset.copied; } catch (err) { /* resta l'indirizzo visibile */ }
+      });
+    </script>`;
 
   return layout({
     lang,
