@@ -229,5 +229,26 @@
   },
   "welcomeClose": {
     "message": "Vous pouvez fermer cet onglet. Vous ne le reverrez plus."
+  },
+  "saveLocationHeading": {
+    "message": "Fenêtre d'enregistrement"
+  },
+  "saveLocationDefault": {
+    "message": "Commencer dans le dossier Téléchargements"
+  },
+  "saveLocationSubfolder": {
+    "message": "Commencer dans un sous-dossier de Téléchargements"
+  },
+  "saveLocationSubfolderPrefix": {
+    "message": "Téléchargements/"
+  },
+  "saveLocationSubfolderPlaceholder": {
+    "message": "ex. Images"
+  },
+  "saveLocationLast": {
+    "message": "Mémoriser le dernier dossier utilisé"
+  },
+  "saveLocationLastHint": {
+    "message": "Utilise les paramètres de téléchargement de Chrome : activez \"Toujours demander où enregistrer les fichiers\" dans Chrome pour choisir le dossier à chaque fois."
   }
 }

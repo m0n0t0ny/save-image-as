@@ -162,14 +162,69 @@ async function saveImage(url, format, tabId) {
     }
 
     const out = format === 'pdf' ? await toPdf(bitmap) : await encode(bitmap, format);
+    const dataUrl = await blobToDataUrl(out);
+    const name = `${fileStem(url)}.${format}`;
+    const { saveLocation = 'default', saveSubfolder = '' } = await chrome.storage.local.get(['saveLocation', 'saveSubfolder']);
+
+    // "Ricorda l'ultima cartella": download normale avviato dalla pagina, così Chrome usa
+    // le sue impostazioni e apre la finestra nell'ultima cartella usata
+    if (saveLocation === 'last' && await downloadFromPage(tabId, dataUrl, name)) {
+      incrementSaveCount();
+      return;
+    }
+
+    // L'API accetta solo percorsi dentro la cartella Download: la finestra parte da lì
+    const folder = saveLocation === 'subfolder' ? cleanSubfolder(saveSubfolder) : '';
     const id = await chrome.downloads.download({
-      url: await blobToDataUrl(out),
-      filename: `${fileStem(url)}.${format}`,
+      url: dataUrl,
+      filename: folder ? `${folder}/${name}` : name,
       saveAs: true
     });
     if (id !== undefined) incrementSaveCount();
   } catch (error) {
     console.error('Save Image As:', error);
+  }
+}
+
+// Sottocartella di Download scritta dall'utente: niente percorsi assoluti né "..", solo caratteri validi
+function cleanSubfolder(path) {
+  return String(path).split(/[\\/]+/)
+    .map(part => part.replace(/[:*?"<>|\u0000-\u001f]/g, '_').replace(/[. ]+$/, '').trim())
+    .filter(part => part && part !== '.' && part !== '..')
+    .join('/')
+    .slice(0, 200);
+}
+
+// Restituisce false se la pagina non accetta script (pagine di Chrome, Web Store, PDF):
+// in quel caso si usa il salvataggio normale dell'estensione
+async function downloadFromPage(tabId, dataUrl, name) {
+  try {
+    const [{ result }] = await chrome.scripting.executeScript({
+      target: { tabId },
+      args: [dataUrl, name],
+      func: async (dataUrl, name) => {
+        try {
+          // Decodifica senza fetch, che alcune pagine bloccano con la loro CSP
+          const [head, base64] = dataUrl.split(',');
+          const bytes = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
+          const href = URL.createObjectURL(new Blob([bytes], { type: head.slice(5).split(';')[0] }));
+          const a = document.createElement('a');
+          a.href = href;
+          a.download = name;
+          a.style.display = 'none';
+          document.documentElement.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(href), 60000);
+          return true;
+        } catch (e) {
+          return false;
+        }
+      }
+    });
+    return result === true;
+  } catch (e) {
+    return false;
   }
 }
 

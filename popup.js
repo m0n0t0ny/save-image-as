@@ -46,3 +46,29 @@ getReviewStatus().then(({ due }) => {
     never: document.getElementById('reviewNever')
   });
 });
+
+// Dove parte la finestra di salvataggio (letto da background.js a ogni salvataggio)
+const locationRadios = document.querySelectorAll('input[name="saveLocation"]');
+const subfolderRow = document.getElementById('subfolderRow');
+const subfolderInput = document.getElementById('saveSubfolder');
+const lastHint = document.getElementById('lastHint');
+subfolderInput.placeholder = chrome.i18n.getMessage('saveLocationSubfolderPlaceholder');
+
+function showLocationDetails(value) {
+  subfolderRow.hidden = value !== 'subfolder';
+  lastHint.hidden = value !== 'last';
+}
+
+chrome.storage.local.get(['saveLocation', 'saveSubfolder']).then(({ saveLocation = 'default', saveSubfolder = '' }) => {
+  const radio = document.querySelector(`input[name="saveLocation"][value="${saveLocation}"]`) || locationRadios[0];
+  radio.checked = true;
+  subfolderInput.value = saveSubfolder;
+  showLocationDetails(radio.value);
+});
+
+locationRadios.forEach(radio => radio.addEventListener('change', () => {
+  chrome.storage.local.set({ saveLocation: radio.value });
+  showLocationDetails(radio.value);
+  if (radio.value === 'subfolder') subfolderInput.focus();
+}));
+subfolderInput.addEventListener('input', () => chrome.storage.local.set({ saveSubfolder: subfolderInput.value.trim() }));

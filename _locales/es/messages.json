@@ -229,5 +229,26 @@
   },
   "welcomeClose": {
     "message": "Puedes cerrar esta pestaña. No volverás a verla."
+  },
+  "saveLocationHeading": {
+    "message": "Ventana de guardado"
+  },
+  "saveLocationDefault": {
+    "message": "Empezar en la carpeta Descargas"
+  },
+  "saveLocationSubfolder": {
+    "message": "Empezar en una subcarpeta de Descargas"
+  },
+  "saveLocationSubfolderPrefix": {
+    "message": "Descargas/"
+  },
+  "saveLocationSubfolderPlaceholder": {
+    "message": "p. ej. Imágenes"
+  },
+  "saveLocationLast": {
+    "message": "Recordar la última carpeta usada"
+  },
+  "saveLocationLastHint": {
+    "message": "Usa los ajustes de descarga de Chrome: activa \"Preguntar dónde se guardará cada archivo antes de descargarlo\" en Chrome para elegir la carpeta cada vez."
   }
 }

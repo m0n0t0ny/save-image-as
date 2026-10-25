@@ -229,5 +229,26 @@
   },
   "welcomeClose": {
     "message": "Puoi chiudere questa scheda. Non la vedrai più."
+  },
+  "saveLocationHeading": {
+    "message": "Finestra di salvataggio"
+  },
+  "saveLocationDefault": {
+    "message": "Parti dalla cartella Download"
+  },
+  "saveLocationSubfolder": {
+    "message": "Parti da una sottocartella di Download"
+  },
+  "saveLocationSubfolderPrefix": {
+    "message": "Download/"
+  },
+  "saveLocationSubfolderPlaceholder": {
+    "message": "es. Immagini"
+  },
+  "saveLocationLast": {
+    "message": "Ricorda l'ultima cartella usata"
+  },
+  "saveLocationLastHint": {
+    "message": "Usa le impostazioni di download di Chrome: attiva \"Chiedi dove salvare il file prima di scaricarlo\" in Chrome per scegliere ogni volta la cartella."
   }
 }

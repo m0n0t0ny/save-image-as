@@ -1,7 +1,7 @@
 // Testi del sito, una voce per lingua. Le chiavi devono essere uguali in tutte le lingue.
 export const LANGS = ['en', 'it', 'es'];
 export const LANG_NAMES = { en: 'English', it: 'Italiano', es: 'Español' };
-export const UPDATED = { en: 'October 17, 2026', it: '17 ottobre 2026', es: '17 de octubre de 2026' };
+export const UPDATED = { en: 'October 25, 2026', it: '25 ottobre 2026', es: '25 de octubre de 2026' };
 
 export const T = {
   en: {
@@ -435,7 +435,8 @@ export const LEGAL = {
 <ul>
   <li>how many images you have saved and your answer to the rating request ("rate", "later" or "no thanks"), so a rating is requested at most once;</li>
   <li>whether you have already seen the new bulk download feature, so the "new" label is shown only until you open it;</li>
-  <li>the download mode you chose in bulk download (ZIP archive or separate files).</li>
+  <li>the download mode you chose in bulk download (ZIP archive or separate files);</li>
+  <li>where the save dialog starts (Downloads folder, a subfolder of Downloads with the name you typed, or the last folder used).</li>
 </ul>
 <p>Two of these values are also kept in Chrome's sync storage: your final answer to the rating request and whether the welcome page has already been shown after installation. If Chrome sync is on, Chrome copies them to your other computers, so you are not asked again there. They are never sent to us.</p>
 <p>None of these values identify you and they are deleted when you remove the extension.</p>
@@ -520,7 +521,8 @@ export const LEGAL = {
 <ul>
   <li>quante immagini hai salvato e la tua risposta alla richiesta di valutazione ("valuta", "più tardi" o "no, grazie"), per chiedere una valutazione al massimo una volta;</li>
   <li>se hai già visto la novità del download in blocco, per mostrare l'etichetta "nuovo" solo finché non lo apri;</li>
-  <li>la modalità di download scelta nel download in blocco (archivio ZIP o file separati).</li>
+  <li>la modalità di download scelta nel download in blocco (archivio ZIP o file separati);</li>
+  <li>da dove parte la finestra di salvataggio (cartella Download, una sottocartella di Download con il nome che hai scritto, oppure l'ultima cartella usata).</li>
 </ul>
 <p>Due di questi valori sono salvati anche nella memoria sincronizzata di Chrome: la tua risposta definitiva alla richiesta di valutazione e se la pagina di benvenuto è già stata mostrata dopo l'installazione. Se la sincronizzazione di Chrome è attiva, Chrome li copia sugli altri tuoi computer, così non ti viene chiesto di nuovo. Non vengono mai inviati a noi.</p>
 <p>Nessuno di questi valori ti identifica e vengono cancellati quando rimuovi l'estensione.</p>
@@ -605,7 +607,8 @@ export const LEGAL = {
 <ul>
   <li>cuántas imágenes guardaste y tu respuesta a la solicitud de valoración ("valorar", "más tarde" o "no, gracias"), para pedir una valoración como máximo una vez;</li>
   <li>si ya viste la novedad de la descarga masiva, para mostrar la etiqueta "nuevo" solo hasta que la abras;</li>
-  <li>el modo de descarga elegido en la descarga masiva (archivo ZIP o archivos separados).</li>
+  <li>el modo de descarga elegido en la descarga masiva (archivo ZIP o archivos separados);</li>
+  <li>dónde empieza la ventana de guardado (carpeta Descargas, una subcarpeta de Descargas con el nombre que escribiste, o la última carpeta usada).</li>
 </ul>
 <p>Dos de estos valores también se guardan en el almacenamiento sincronizado de Chrome: tu respuesta definitiva a la solicitud de valoración y si la página de bienvenida ya se mostró tras la instalación. Si la sincronización de Chrome está activada, Chrome los copia a tus otros equipos para no volver a preguntarte. Nunca se nos envían.</p>
 <p>Ninguno de estos valores te identifica y se borran al quitar la extensión.</p>

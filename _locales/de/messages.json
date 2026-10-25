@@ -229,5 +229,26 @@
   },
   "welcomeClose": {
     "message": "Du kannst diesen Tab schließen. Er erscheint nicht wieder."
+  },
+  "saveLocationHeading": {
+    "message": "Speicherdialog"
+  },
+  "saveLocationDefault": {
+    "message": "Im Ordner Downloads beginnen"
+  },
+  "saveLocationSubfolder": {
+    "message": "In einem Unterordner von Downloads beginnen"
+  },
+  "saveLocationSubfolderPrefix": {
+    "message": "Downloads/"
+  },
+  "saveLocationSubfolderPlaceholder": {
+    "message": "z. B. Bilder"
+  },
+  "saveLocationLast": {
+    "message": "Zuletzt verwendeten Ordner merken"
+  },
+  "saveLocationLastHint": {
+    "message": "Nutzt die Download-Einstellungen von Chrome: Aktiviere in Chrome \"Vor dem Download von Dateien nach dem Speicherort fragen\", um den Ordner jedes Mal zu wählen."
   }
 }

@@ -139,6 +139,45 @@
     .howto li + li { margin-top: 2px; }
     .howto li::marker { color: var(--muted); }
 
+    /* Dove parte la finestra di salvataggio */
+    .location {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .location h2 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .location label {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 3px 0;
+      cursor: pointer;
+    }
+    .location input[type="radio"] { margin: 3px 0 0; accent-color: var(--accent); flex-shrink: 0; }
+    .location .sub {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 4px 0 2px 22px;
+      color: var(--muted);
+    }
+    .location .sub[hidden], .location .hint[hidden] { display: none; }
+    .location .sub input {
+      flex: 1;
+      min-width: 0;
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      color: var(--ink);
+      font: inherit;
+    }
+    .location .hint { margin: 2px 0 0 22px; color: var(--muted); font-size: 12px; }
+
     .bottom {
       padding: 10px 16px 14px;
       color: var(--muted);
@@ -186,6 +225,18 @@
         <li data-i18n="popupStep2">Select "Save image as..."</li>
         <li data-i18n="popupStep3">Choose PNG, JPG, WEBP or PDF</li>
       </ol>
+    </section>
+
+    <section class="location">
+      <h2 data-i18n="saveLocationHeading">Save dialog</h2>
+      <label><input type="radio" name="saveLocation" value="default"><span data-i18n="saveLocationDefault">Start in the Downloads folder</span></label>
+      <label><input type="radio" name="saveLocation" value="subfolder"><span data-i18n="saveLocationSubfolder">Start in a subfolder of Downloads</span></label>
+      <div class="sub" id="subfolderRow" hidden>
+        <span data-i18n="saveLocationSubfolderPrefix">Downloads/</span>
+        <input type="text" id="saveSubfolder" maxlength="200" spellcheck="false">
+      </div>
+      <label><input type="radio" name="saveLocation" value="last"><span data-i18n="saveLocationLast">Remember the last folder used</span></label>
+      <p class="hint" id="lastHint" data-i18n="saveLocationLastHint" hidden>Uses Chrome's download settings.</p>
     </section>
   </main>
 
